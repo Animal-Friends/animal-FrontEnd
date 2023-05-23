@@ -54,6 +54,7 @@ const Center = styled.div`
   display: flex;
   flex: 1;
   flex-direction: row;
+  min-width: 1024px;
 `;
 const BodyContainer = styled.div`
   display: flex;
