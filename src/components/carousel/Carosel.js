@@ -14,13 +14,14 @@ const settings = {
 };
 const Carosel = () => {
   return (
-    <div style={{ minWidth: "1440px" }}>
-      <Slider {...settings}>
+    <div style={{}}>
+      <Slider style={{ overflow: "hidden" }} {...settings}>
         {CarouselItems.map((item, i) => (
           <div>
             <img
               style={{
                 minWidth: "500px",
+                objectFit: "fill",
                 height: "250px",
               }}
               src={item.img}

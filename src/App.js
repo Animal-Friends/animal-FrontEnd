@@ -1,51 +1,53 @@
 import styled, { createGlobalStyle } from "styled-components";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import Home from "./page/Home";
 import NavBar from "./components/nav";
+import AnimalService from "./page/AnimalService";
 
 function App() {
   const GlobalStyle = createGlobalStyle`
-    body {
-      font-family: 'Noto Sans', sans-serif;
-      padding: 0;
-      margin: 0;
-      background: #F4F6F8;
-    }
-
-    div, p, span, h1 {
-      margin: 0;
-      box-sizing: border-box;
-      color: #474749;
-
-      ::-webkit-scrollbar {
-        display: none;
+      body {
+        font-family: 'Noto Sans', sans-serif;
+        padding: 0;
+        margin: 0;
+        background: #F4F6F8;
       }
-    }
 
-    button, input {
-      outline: none;
-      border: none;
-    }
+      div, p, span, h1 {
+        margin: 0;
+        box-sizing: border-box;
+        color: #474749;
 
-    button {
-      cursor: pointer;
-    }
-  `;
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      }
 
+      button, input {
+        outline: none;
+        border: none;
+      }
+
+      button {
+        cursor: pointer;
+      }
+    `;
   return (
-    <Router>
+    <>
       <GlobalStyle />
-      <NavBar />
-
       <Center>
         <BodyContainer>
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/animal-service" element={<AnimalService />} />
+            </Routes>
+          </Router>
         </BodyContainer>
       </Center>
-    </Router>
+    </>
   );
 }
 

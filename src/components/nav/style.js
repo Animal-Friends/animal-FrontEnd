@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const RootNavContainer = styled.div`
-  min-width: 1440px;
+  //min-width: 1440px;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
