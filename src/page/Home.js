@@ -1,7 +1,12 @@
 import react from "react";
+import Carosel from "../components/carousel/Carosel";
 
 const Home = () => {
-  return "홈";
+  return (
+    <div style={{ minWidth: "1024px" }}>
+      <Carosel />
+    </div>
+  );
 };
 
 export default Home;

@@ -5,14 +5,7 @@ import LoginModal from "../modal/loginModal/LoginModal";
 const NavBar = () => {
   const [isModalOpen, setIsOpenModal] = useState(false);
   const handleClickModal = (type) => {
-    switch (type) {
-      case "로그인":
-        setIsOpenModal(true);
-
-        <></>;
-      default:
-        break;
-    }
+    setIsOpenModal(true);
   };
   return (
     <RootNavContainer>
