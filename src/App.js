@@ -2,9 +2,9 @@ import styled, { createGlobalStyle } from "styled-components";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Home from "./page/Home";
 import NavBar from "./components/nav";
-import AnimalService from "./page/AnimalService";
+import Home from "./page/home/Home";
+import AnimalService from "./page/animalService/AnimalService";
 
 function App() {
   const GlobalStyle = createGlobalStyle`

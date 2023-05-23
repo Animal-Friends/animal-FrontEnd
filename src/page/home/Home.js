@@ -1,11 +1,12 @@
 import react from "react";
-import Carosel from "../components/carousel/Carosel";
-import Board from "../components/board";
-import { CommonButton } from "../components/button";
+
 import { useLocation } from "react-router-dom";
-import NavBar from "../components/nav";
 import React from "react";
 import styled from "styled-components";
+import Carosel from "../../components/carousel/Carosel";
+import NavBar from "../../components/nav";
+import { CommonButton } from "../../components/button";
+import Board from "../../components/board";
 
 const Home = () => {
   const location = useLocation();
