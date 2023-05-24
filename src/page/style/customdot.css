@@ -1,0 +1,60 @@
+
+.dots_custom {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto 0;
+    padding: 0;
+}
+
+.slick-slider {
+    /* 위에는 이미지를 div에 꽉 채우기 위한 3가지 설정 */
+}
+
+
+.dots_custom li {
+    list-style: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 6px;
+    padding: 0;
+
+}
+
+.dots_custom li button {
+    border: none;
+    background: #d1d1d1;
+    color: transparent;
+    cursor: pointer;
+    display: block;
+    height: 8px;
+    width: 8px;
+    border-radius: 100%;
+    padding: 0;
+}
+
+.dots_custom li.slick-active button {
+    background-color: #ff7f00;
+}
+
+
+.slick-slide {
+    padding-right: 20px;
+}
+
+.slick-prev:before {
+    font-size: 20px;
+    opacity: .75;
+    color: #ff7f00;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-next:before {
+    font-size: 20px;
+    opacity: .75;
+    color: #ff7f00;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+

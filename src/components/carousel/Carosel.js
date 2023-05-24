@@ -2,6 +2,7 @@ import { CarouselItems } from "../../constant";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "../../page/style/customdot.css";
 
 const settings = {
   className: "center",
@@ -11,6 +12,20 @@ const settings = {
   speed: 500,
   autoplay: true,
   autoplaySpeed: 2000,
+  dots: true,
+  appendDots: (dots) => (
+    <div
+      className="dots_custom"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <ul> {dots} </ul>
+    </div>
+  ),
+  dotsClass: "dots_custom",
 };
 const Carosel = () => {
   return (

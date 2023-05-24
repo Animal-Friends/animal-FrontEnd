@@ -5,4 +5,6 @@ export const CardListRootContainer = styled.div`
   padding: 20px;
   z-index: 9999999999;
   bottom: 0;
+  display: inline-block;
+  width: 100%;
 `;
