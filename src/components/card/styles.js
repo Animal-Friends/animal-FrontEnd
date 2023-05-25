@@ -8,11 +8,13 @@ export const Box = styled.div`
 export const CardBox = styled.div`
   display: flex;
   height: 200px;
+  cursor: pointer;
 
   &:hover {
     border-radius: 10px;
     background-color: #ff7f00;
     opacity: 0.45;
+    transition: all ease 1s 0s;
     /* 필요한 다른 스타일링 옵션들 */
   }
 `;

@@ -5,8 +5,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/nav";
 import Home from "./page/home/Home";
 import AnimalService from "./page/animalService/AnimalService";
+import useGeoLocation from "./hooks/useGeoLocation";
 
 function App() {
+  useGeoLocation();
   const GlobalStyle = createGlobalStyle`
       body {
         font-family: 'Noto Sans', sans-serif;

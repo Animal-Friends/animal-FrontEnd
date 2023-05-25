@@ -9,10 +9,11 @@ import { CommonButton } from "../../components/button";
 import Board from "../../components/board";
 
 const Home = () => {
-  const location = useLocation();
+  const path = useLocation();
+
   return (
     <>
-      {location.pathname === "/" && <NavBar />}
+      {path.pathname === "/" && <NavBar />}
 
       <Carosel />
       <div style={{ padding: "0px 10px" }}>

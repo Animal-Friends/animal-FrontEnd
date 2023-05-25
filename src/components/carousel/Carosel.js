@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../page/style/customdot.css";
+import { useState } from "react";
 
 const settings = {
   className: "center",
@@ -31,7 +32,7 @@ const Carosel = () => {
   return (
     <div style={{}}>
       <Slider style={{ overflow: "hidden" }} {...settings}>
-        {CarouselItems.map((item, i) => (
+        {CarouselItems?.map((item, i) => (
           <div>
             <img
               style={{
@@ -39,7 +40,7 @@ const Carosel = () => {
                 objectFit: "fill",
                 height: "250px",
               }}
-              src={item.img}
+              src={item?.img}
               alt={""}
             />
           </div>
