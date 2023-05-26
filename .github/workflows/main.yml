@@ -19,6 +19,7 @@ jobs:
           script: |
             sudo su
             cd 
+            git pull origin main
             cd animal-Frontend
             chmod +x deploy.sh
             sh deploy.sh
