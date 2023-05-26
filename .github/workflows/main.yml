@@ -5,15 +5,16 @@ on:
       - main
 
 jobs:
-  build:
+  SSH:
     runs-on: ubuntu-22.04
     steps:
+      - uses: actions/checkout@v2
       - name: SSH-deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_IP }} # ssh 접속용 ip
           username: ubuntu
-          password: ${{ secrets.SSH_PEM_KEY }} # ssh 접속용 password
+          key: ${{ secrets.SSH_PEM_KEY }} # ssh 접속용 password
           port: 22 # ssh 접속용 port
           script: |
             sh deploy.sh
