@@ -17,4 +17,7 @@ jobs:
           key: ${{ secrets.SSH_PEM_KEY }} # ssh 접속용 password
           port: 22 # ssh 접속용 port
           script: |
-            sh deploy.sh
+            cd animal-Frontend
+            git pull origin main
+  
+            yarn build
