@@ -20,7 +20,10 @@ jobs:
           script: |
            ls -al
            cd animal-FrontEnd
-           git pull origin main
+           git config --global --add safe.directory /home/ubuntu/animal-FrontEnd
+           sudo chmod -R 755 /home/ubuntu/animal-FrontEnd/.git
+            
+            git pull origin main
            
             
            
