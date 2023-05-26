@@ -21,8 +21,7 @@ jobs:
             pwd
             sudo su 
             cd 
-            cd animal-Frontend
-            git pull origin main
-            yarn build
+            pwd
+           
             
            
