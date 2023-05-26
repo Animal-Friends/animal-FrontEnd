@@ -6,7 +6,7 @@ on:
 
 jobs:
   SSH:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v2
       - name: SSH-deploy
@@ -17,9 +17,4 @@ jobs:
           key: ${{ secrets.SSH_PEM_KEY }} # ssh 접속용 password
           port: 22 # ssh 접속용 port
           script: |
-            sudo su
-            cd 
-            git pull origin main
-            cd animal-Frontend
-            chmod +x deploy.sh
             sh deploy.sh
