@@ -23,6 +23,7 @@ jobs:
            cd animal-FrontEnd/
            sudo chmod 755 .git
            sudo git pull origin main
+           yarn build
            
             
            
