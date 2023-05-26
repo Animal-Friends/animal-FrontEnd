@@ -20,8 +20,13 @@ jobs:
           script: |
             pwd
             sudo su 
-            cd 
-            pwd
+            cd animal-Frontend
+            
+            git pull origin main 
+            
+            yes
+            
+            yarn build
            
             
            
