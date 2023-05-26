@@ -24,6 +24,7 @@ jobs:
            sudo chmod 755 .git
            sudo git pull origin main
            sudo yarn build
+            
            
             
            
