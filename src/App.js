@@ -2,10 +2,11 @@ import styled, { createGlobalStyle } from "styled-components";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import NavBar from "./components/nav";
 import Home from "./page/home/Home";
 import AnimalService from "./page/animalService/AnimalService";
 import useGeoLocation from "./hooks/useGeoLocation";
+import BoardService from "./components/board/BoardService";
+import BoardDetail from "./components/board/BoardDetail";
 
 function App() {
   useGeoLocation();
@@ -45,6 +46,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/animal-service" element={<AnimalService />} />
+              <Route path="/board-service" element={<BoardService />} />
+              <Route path="/board-detail" element={<BoardDetail />}>
+                <Route path=":id" element={<BoardDetail />} />
+              </Route>
             </Routes>
           </Router>
         </BodyContainer>

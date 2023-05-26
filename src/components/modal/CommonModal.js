@@ -1,7 +1,7 @@
 import { ModalBackdrop } from "./style/style";
 import styled from "styled-components";
 
-const CommonModal = ({ isModalOpen, setIsOpenModal, children, onClick }) => {
+const CommonModal = ({ isModalOpen, setIsOpenModal, children }) => {
   const onClickCommonClose = () => {
     setIsOpenModal(false);
   };

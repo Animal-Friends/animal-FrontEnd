@@ -15,6 +15,8 @@ const AnimalService = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [curIndex, setCurIndex] = useState(null);
+
   const [searchData, setSearchData] = useState([]);
   const [selectedMarkerIndex, setSelectedMarkerIndex] = useState(null); // 선택된 마커의 인덱스를 추적하는 상태값
   const { positionlat, positionlng } = useSelector((state) => state.util);
@@ -50,10 +52,6 @@ const AnimalService = () => {
       center: { lat: y, lng: x },
       isPanto: true,
     });
-
-    // setSelectedMarkerIndex(index); // 선택된 마커의 인덱스 설정
-
-    // map.setCenter(new kakao.maps.LatLng(y, x));
   };
   return (
     <div>

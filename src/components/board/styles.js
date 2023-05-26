@@ -24,12 +24,37 @@ export const RootStyle = styled.div`
   justify-content: right;
 `;
 
+export const CommentRootStyle = styled.div`
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const CommentBox = styled.div`
+  width: 100%;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const CommentContent = styled.div`
+  display: flex;
+  align-items: center;
+`;
 export const Button = styled.button`
   width: 200px;
   padding: 10px 0px;
   border-radius: 10px;
   background-color: #6eeaff;
   margin-left: 10px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #5ac8ff;
+  }
 `;
 
 export const NullableStyle = styled.div`

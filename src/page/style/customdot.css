@@ -42,12 +42,16 @@
 }
 
 .slick-prev:before {
+
     font-size: 20px;
     opacity: .75;
     color: #ff7f00;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
 }
+
+
 
 .slick-next:before {
     font-size: 20px;

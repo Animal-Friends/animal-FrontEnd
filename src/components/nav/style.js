@@ -13,6 +13,9 @@ export const RootNavContainer = styled.div`
   margin-bottom: 25px;
 `;
 
-export const LoginBox = styled.div``;
+export const LoginBox = styled.div`
+  display: flex;
+  gap: 20px;
+`;
 
 export const RogoBox = styled.div``;

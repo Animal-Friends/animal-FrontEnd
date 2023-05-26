@@ -1,17 +1,12 @@
-import { MapMarker, useMap } from "react-kakao-maps-sdk";
+import { CustomOverlayMap, MapMarker, useMap } from "react-kakao-maps-sdk";
 import { useState } from "react";
 
-const CustomMarker = ({
-  position,
-  index,
-  setSelectedMarkerIndex,
-  selectedMarkerIndex,
-}) => {
+const CustomMarker = ({ setCurIndex, position, index }) => {
   const map = useMap();
 
   return (
     <MapMarker
-      onClick={(data) => {
+      onClick={(data, i) => {
         map.panTo(data.getPosition());
       }}
       key={index}
@@ -28,7 +23,14 @@ const CustomMarker = ({
       }}
       // 마커에 마우스아웃 이벤트를 등록합니다
     >
-      <div style={{ padding: "5px", color: "#000" }}>{position.place_name}</div>
+      <div
+        style={{
+          padding: "5px",
+          color: "#000",
+        }}
+      >
+        {position.place_name}
+      </div>
     </MapMarker>
   );
 };

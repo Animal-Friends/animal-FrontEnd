@@ -11,3 +11,17 @@ export const ModalBackdrop = styled.div`
   display: grid;
   place-items: center;
 `;
+
+export const LoginBox = styled.form`
+  padding: 20px;
+`;
+
+export const InputStyle = {
+  width: "100%",
+  marginBottom: "10px",
+};
+export const TopBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;

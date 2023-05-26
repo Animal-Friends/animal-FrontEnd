@@ -3,12 +3,23 @@ import { useCallback, useState } from "react";
 import LoginModal from "../modal/loginModal/LoginModal";
 import { ANIMALSERVICE } from "../../constant";
 import { useNavigate } from "react-router-dom";
+import SignUpModal from "../modal/loginModal/SignUpModal";
 
 const NavBar = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsOpenModal] = useState(false);
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
   const handleClickModal = (type) => {
-    setIsOpenModal(true);
+    switch (type) {
+      case "로그인":
+        setIsOpenModal(true);
+        break;
+      case "회원가입":
+        setIsSignUpModalOpen(true);
+        break;
+      default:
+        break;
+    }
   };
   return (
     <RootNavContainer>
@@ -25,7 +36,6 @@ const NavBar = () => {
           {item.name}
         </div>
       ))}
-      <LoginModal />
       <LoginBox>
         <div
           onClick={() => {
@@ -36,7 +46,19 @@ const NavBar = () => {
         </div>
       </LoginBox>
       {isModalOpen && (
-        <LoginModal isModalOpen={isModalOpen} setIsOpenModal={setIsOpenModal} />
+        <LoginModal
+          setIsSignUpModalOpen={setIsSignUpModalOpen}
+          isModalOpen={isModalOpen}
+          setIsOpenModal={setIsOpenModal}
+        />
+      )}
+
+      {isSignUpModalOpen && (
+        <SignUpModal
+          setLoginModal={setIsOpenModal}
+          isModalOpen={isSignUpModalOpen}
+          setIsOpenModal={setIsSignUpModalOpen}
+        />
       )}
     </RootNavContainer>
   );
