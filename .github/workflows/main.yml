@@ -19,11 +19,10 @@ jobs:
           port: 22 # ssh 접속용 port
           script: |
            ls -al
+           sudo chmod -R 777 animal-FrontEnd/
            cd animal-FrontEnd
            git config --global --add safe.directory /home/ubuntu/animal-FrontEnd
-           sudo chmod -R 755 /home/ubuntu/animal-FrontEnd/.git
-            
-            git pull origin main
+           git pull origin main
            
             
            
