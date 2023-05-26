@@ -29,4 +29,5 @@ jobs:
         
           git pull origin main
           yarn install
-          yarn build
+          yarn run build
+          sudo service nginx restart
