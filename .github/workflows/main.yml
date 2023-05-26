@@ -12,11 +12,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18.16.0
-      - name: Build
-        run: |
-          cd animal-FrontEnd/
-          yarn install
-          yarn build
       - name: SSH-deploy
         uses: appleboy/ssh-action@master
         with:
@@ -29,5 +24,9 @@ jobs:
             sudo su 
             cd animal-FrontEnd/
             sudo chmod 755 .git
-            sudo git pull origin main
-            sudo service nginx restart
+      - name: Build
+        run: |
+          cd animal-FrontEnd/
+          git pull origin main
+          yarn install
+          yarn build
