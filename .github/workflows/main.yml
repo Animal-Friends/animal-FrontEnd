@@ -19,7 +19,6 @@ jobs:
           port: 22 # ssh 접속용 port
           script: |
             pwd
-            sudo su 
             cd animal-Frontend
             git pull --confirm origin main
             yarn build
