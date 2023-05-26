@@ -26,7 +26,7 @@ jobs:
             sudo chmod 755 .git
       - name: Build
         run: |
-          cd animal-FrontEnd/
+        
           git pull origin main
           yarn install
           yarn build
