@@ -9,25 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.16.0
+      - name: Build
+        run: |
+          cd animal-FrontEnd/
+          yarn install
+          yarn build
       - name: SSH-deploy
-
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.REMOTE_IP }} # ssh 접속용 ip
+          host: ${{ secrets.REMOTE_IP }} # SSH 접속용 IP
           username: ubuntu
-          key: ${{ secrets.SSH_PEM_KEY }} # ssh 접속용 password
-          port: 22 # ssh 접속용 port
+          key: ${{ secrets.SSH_PEM_KEY }} # SSH 접속용 키
+          port: 22 # SSH 접속용 포트
           script: |
-           ls -al
-           sudo su 
-           cd animal-FrontEnd/
-           sudo chmod 755 .git
-           sudo git pull origin main
-           yarn install
-           yarn build
-           sudo service nginx restart
-
-            
-           
-            
-           
+            ls -al
+            sudo su 
+            cd animal-FrontEnd/
+            sudo chmod 755 .git
+            sudo git pull origin main
+            sudo service nginx restart
