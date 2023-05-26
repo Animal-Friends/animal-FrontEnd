@@ -24,10 +24,7 @@ jobs:
             sudo su 
             cd animal-FrontEnd/
             sudo chmod 755 .git
-      - name: Build
-        run: |
-        
-          git pull origin main
-          npm install
-          npm run build
-          sudo service nginx restart
+            git pull origin main
+            yarn install
+            npm run build
+            sudo service nginx restart
