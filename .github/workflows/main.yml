@@ -19,9 +19,8 @@ jobs:
           port: 22 # ssh 접속용 port
           script: |
            ls -al
-            sudo su 
+           sudo su 
            cd animal-FrontEnd/
-           git config --global --add safe.directory /home/ubuntu/animal-FrontEnd
            git pull origin main
            
             
