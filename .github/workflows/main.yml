@@ -19,4 +19,4 @@ jobs:
           port: 22 # ssh 접속용 port
           script: |
             cd ../../
-            sh deploy.sh
+            deploy.sh
