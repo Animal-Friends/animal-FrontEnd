@@ -3,6 +3,7 @@ import { InputStyle, LoginBox, TopBar } from "../style/style";
 import styled from "styled-components";
 import { BasicButton, CustomCancelMdCancel } from "../../button";
 import CustomTextField from "../../input/CustomTextField";
+import BirthPicker from "../../date/BirthPicker";
 
 const LoginModal = ({ setIsSignUpModalOpen, isModalOpen, setIsOpenModal }) => {
   return (

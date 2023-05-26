@@ -24,7 +24,7 @@ const CommonModal = ({ isModalOpen, setIsOpenModal, children }) => {
 
 const BoxContainer = styled.div`
   width: 500px;
-  height: 667px;
+  height: 550px;
   padding: 20px;
   background-color: white;
 `;

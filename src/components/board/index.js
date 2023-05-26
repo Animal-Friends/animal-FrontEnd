@@ -9,9 +9,12 @@ import Paper from "@mui/material/Paper";
 import dayjs from "dayjs";
 import { useState } from "react";
 import PageNation from "../pagenation";
+import { NullableStyle } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 const Board = () => {
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
   const perpage = 5;
 
   return (
@@ -27,20 +30,29 @@ const Board = () => {
                 })}
               </TableRow>
             </TableHead>
-            {[]
+            {[
+              {
+                id: 1,
+                title: "123",
+                content: "123",
+                User: { nickname: "123" },
+              },
+            ]
               ?.slice((page - 1) * perpage, (page - 1) * perpage + perpage)
               ?.map((row, key) => (
                 <TableBody key={key}>
                   <TableRow
                     sx={{ cursor: "pointer" }}
-                    onClick={() => {}}
+                    onClick={() => {
+                      navigate(`/board-detail/${row.id}`, { state: row });
+                    }}
                     key={row?.id}
                   >
                     <TableCell component="th" scope="row">
                       {row?.title}
                     </TableCell>
                     <TableCell component="th" scope="row">
-                      {row?.content} [{row?.Comments?.length}]
+                      {row?.content}
                     </TableCell>
                     <TableCell component="th" scope="row">
                       {dayjs(row?.createdAt).format("YYYY-MM-DD")}
@@ -52,14 +64,26 @@ const Board = () => {
                 </TableBody>
               ))}
           </Table>
-          {/*{resData?.length === 0 && (*/}
-          {/*    <NullableStyle>*/}
-          {/*        <p>현재 게시물이 존재하지 않습니다</p>*/}
-          {/*    </NullableStyle>*/}
+          {/*{[]?.length === 0 && (*/}
+          {/*  <NullableStyle>*/}
+          {/*    <p>현재 게시물이 존재하지 않습니다</p>*/}
+          {/*  </NullableStyle>*/}
           {/*)}*/}
         </TableContainer>
 
-        <PageNation perpage={perpage} page={page} setPage={setPage} data={[]} />
+        <PageNation
+          perpage={perpage}
+          page={page}
+          setPage={setPage}
+          data={[
+            {
+              id: 1,
+              title: "123",
+              content: "123",
+              User: { nickname: "123" },
+            },
+          ]}
+        />
       </div>
     </>
   );

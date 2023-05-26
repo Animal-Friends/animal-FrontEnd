@@ -1,6 +1,6 @@
 import react from "react";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 import Carosel from "../../components/carousel/Carosel";
@@ -10,6 +10,7 @@ import Board from "../../components/board";
 
 const Home = () => {
   const path = useLocation();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -25,7 +26,12 @@ const Home = () => {
           }}
         >
           <h2>자유 게시판</h2>
-          <CommonButton text={"글쓰기"} />
+          <CommonButton
+            text={"글쓰기"}
+            onClick={() => {
+              navigate("/board-service");
+            }}
+          />
         </div>
         <Board />
       </div>
