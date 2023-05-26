@@ -27,6 +27,7 @@ jobs:
       - name: Build
         run: |
           git pull origin main
+          
           sudo yarn install
           sudo yarn run build
           sudo service nginx restart
