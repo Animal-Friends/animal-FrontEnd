@@ -21,7 +21,8 @@ jobs:
            ls -al
            sudo su 
            cd animal-FrontEnd/
-           git pull origin main
+           sudo chmod 755 .git
+           sudo git pull origin main
            
             
            
