@@ -1,6 +1,5 @@
 import HeaderBar from "../header";
 import React from "react";
-import { CustomBiTrash } from "../button";
 import {
   Button,
   CommentBox,
