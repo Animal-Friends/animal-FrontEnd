@@ -1,3 +1,43 @@
+#name: React build
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#jobs:
+#  SSH:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - uses: actions/setup-node@v3
+#        with:
+#          node-version: 18.16.0
+#      - name: SSH-deploy
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.REMOTE_IP }} # SSH 접속용 IP
+#          username: ubuntu
+#          key: ${{ secrets.SSH_PEM_KEY }} # SSH 접속용 키
+#          port: 22 # SSH 접속용 포트
+#          script: |
+#            ls -al
+#            sudo su
+#            cd animal-FrontEnd/
+#            sudo chmod 755 .git
+#      - name: git pull origin main
+#        run: |
+#          git pull origin main
+#          yarn install
+#      - name: yarn build
+#        run :
+#            env:
+#              CI: false
+#      - name: service start
+#        run : |
+#          sudo service nginx restart
+#
+#
+
 name: React build
 on:
   push:
@@ -21,7 +61,6 @@ jobs:
           port: 22 # SSH 접속용 포트
           script: |
             ls -al
-            sudo su 
             cd animal-FrontEnd/
             sudo chmod 755 .git
       - name: git pull origin main
@@ -29,11 +68,10 @@ jobs:
           git pull origin main
           yarn install
       - name: yarn build
-        run :
-            env:
-              CI: false
+        env:
+          CI: false
+        run: yarn build
       - name: service start
-        run : |
-          sudo service nginx restart
-
-         
+        env:
+          CI: false
+        run: sudo service nginx restart
