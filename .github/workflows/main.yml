@@ -71,17 +71,18 @@ jobs:
           port: 22
           script: |
             cd animal-FrontEnd/
-      - name: yarn install
-        run: npm install -g yarn
-      - name : nvm install 18.0.0
-        run: nvm install 18.0.0
-      - name : nvm use
-        run : nvm use 18.16.0
-      - name: deploy.sh
-        with:
-          script: |
             sh deploy.sh
-            
+
+#      - name: yarn install
+#        run: npm install -g yarn
+#      - name : nvm install 18.0.0
+#        run: nvm install 18.0.0
+#      - name : nvm use
+#        run : nvm use 18.16.0
+#      - name: deploy.sh
+#        with:
+#          script: |
+
 
 #
 #
