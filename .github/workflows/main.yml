@@ -118,10 +118,13 @@ jobs:
           node-version: 18.x # Node.js 18.x 버전을 설치합니다.
       - name: Install Yarn
         run: npm install -g yarn # Yarn 설치
-      - name: Install dependencies
+      - name: Git Pull
         run: |
           cd animal-FrontEnd/
           sudo git pull origin main
+      - name: Install dependencies
+        run: |
+          cd animal-FrontEnd/
           sudo yarn install --frozen-lockfile # 프로젝트 종속성 설치
       - name: Build
         run: |
