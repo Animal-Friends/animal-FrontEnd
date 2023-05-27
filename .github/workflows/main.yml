@@ -1,3 +1,51 @@
+#name: React build
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#jobs:
+#  SSH:
+#    runs-on: ubuntu-latest
+#    env:
+#      CI: false
+#    steps:
+#      - uses: actions/checkout@v3
+#      - uses: actions/setup-node@v3
+#        with:
+#          node-version: 18.x
+#      - name: SSH-deploy
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.REMOTE_IP }}
+#          username: ubuntu
+#          key: ${{ secrets.SSH_PEM_KEY }}
+#          port: 22
+#          script: |
+#            cd animal-FrontEnd/
+#            sudo git pull origin main
+#      - name: Install Yarn
+#        run: npm install -g yarn
+#
+#            # 패키지 의존성 설치
+#      - name: Install dependencies
+#        run: yarn install
+#
+#            # React Build
+#      - name: React Build
+#        run: yarn build
+#      - name : start
+#        run : yarn global add serve
+#      - name : nginx  cp
+#        run :  sudo cp nginx.conf /etc/nginx/sites-available/myapp
+#      - name : nginx symbolick link
+#        run: sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/myapp
+#      - name: nginx start
+#        run : sudo service nginx restart
+#      - name: s
+#        run: ls -al
+#
+
 name: React build
 on:
   push:
@@ -23,5 +71,35 @@ jobs:
           port: 22
           script: |
             cd animal-FrontEnd/
-            sudo git pull origin main
-            sudo sh deploy.sh
+      - name: yarn install
+        run: npm install -g yarn
+      - name : nvm install 18.0.0
+        run: nvm install 18.0.0
+      - name: deploy.sh
+        with:
+          script: |
+            sh deploy.sh
+            
+
+#
+#
+#      - name: Install dependencies
+#        run: yarn install
+#
+#      - name: React Build
+#        run: yarn build
+#
+#      - name: Install Serve
+#        run: yarn global add serve
+#
+#      - name: Copy Nginx Configuration
+#        run: sudo cp nginx/nginx.conf /etc/nginx/sites-available/myapp
+#
+#      - name: Create Symbolic Link
+#        run: sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/myapp
+#
+#      - name: Restart Nginx
+#        run: sudo service nginx restart
+#
+#      - name: List Files
+#        run: ls -al
