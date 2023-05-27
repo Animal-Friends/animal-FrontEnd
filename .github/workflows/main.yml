@@ -94,8 +94,8 @@ jobs:
             yarn -v
             cd animal-FrontEnd/
             sudo git pull origin main
-            sudo npm install 
+            sudo yarn install 
             
-            sudo npm build
+            sudo yarn build
             ls -al
             sudo service nginx restart
