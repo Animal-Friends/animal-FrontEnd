@@ -26,7 +26,7 @@
 #      - run: yarn test
 
 
-name: Node.js CI
+name: animal-friends CD
 
 on:
   push:
@@ -54,3 +54,5 @@ jobs:
           cache: 'yarn'
       - run: yarn install
       - run: yarn run build --if-present
+
+
