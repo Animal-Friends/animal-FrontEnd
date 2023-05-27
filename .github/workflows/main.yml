@@ -68,6 +68,34 @@
 #            sudo su
 #            cd animal-FrontEnd/
 #            sudo service nginx restart
+#name: React build
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#jobs:
+#  SSH:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - uses: actions/setup-node@v3
+#        with:
+#          node-version: 18.16.0
+#      - name: SSH-deploy
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.REMOTE_IP }}
+#          username: ubuntu
+#          key: ${{ secrets.SSH_PEM_KEY }}
+#          port: 22
+#          script: |
+#            cd animal-FrontEnd/
+#            sudo git pull origin main
+#            yarn install --frozen-lockfile
+#            yarn build
+#            ls -al
+#            sudo service nginx restart
 name: React build
 on:
   push:
@@ -82,6 +110,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18.16.0
+      - name: Install dependencies and build
+        run: |
+          cd animal-FrontEnd/
+          yarn install --frozen-lockfile
+          yarn build
       - name: SSH-deploy
         uses: appleboy/ssh-action@master
         with:
@@ -92,7 +125,5 @@ jobs:
           script: |
             cd animal-FrontEnd/
             sudo git pull origin main
-            yarn install --frozen-lockfile
-            yarn build
             ls -al
             sudo service nginx restart
