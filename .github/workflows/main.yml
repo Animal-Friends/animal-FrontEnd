@@ -17,11 +17,12 @@ jobs:
         with:
           host: ${{ secrets.REMOTE_IP }}
           username: ubuntu
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PEM_KEY }}
           port: 22
           script: |
             cd animal-FrontEnd/
             git pull origin main
+            yarn install
             yarn build
             ls -al
             sudo service nginx restart
