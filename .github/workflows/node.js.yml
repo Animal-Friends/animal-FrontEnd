@@ -1,3 +1,31 @@
+#name: Node.js CI
+#
+#on:
+#  push:
+#    branches: [ "main" ]
+#jobs:
+#  build:
+#    CI:
+#
+#    runs-on: ubuntu-latest
+#
+#    strategy:
+#      matrix:
+#        node-version: [18.x]
+#        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+#
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Use Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#          cache: 'yarn' # 'npm' 대신 'yarn'을 사용하도록 수정
+#      - run: yarn install
+#      - run: yarn run build --if-present
+#      - run: yarn test
+
+
 name: Node.js CI
 
 on:
@@ -15,11 +43,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Pull latest changes
+        run: git pull origin main
+      - name: Set CI environment variable
+        run: echo "CI=false" >> $GITHUB_ENV
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn' # 'npm' 대신 'yarn'을 사용하도록 수정
+          cache: 'yarn'
       - run: yarn install
       - run: yarn run build --if-present
       - run: yarn test
