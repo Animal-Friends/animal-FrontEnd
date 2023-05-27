@@ -22,7 +22,14 @@ jobs:
           script: |
             cd animal-FrontEnd/
             sudo git pull origin main
-            sudo yarn install
-            sudo yarn build
-            ls -al
-            sudo service nginx restart
+      - name: Install Yarn
+        run: npm install -g yarn
+
+            # 패키지 의존성 설치
+      - name: Install dependencies
+        run: yarn install
+
+            # React Build
+      - name: React Build
+        run: yarn build
+
