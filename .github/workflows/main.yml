@@ -66,6 +66,7 @@ jobs:
       - name: git pull origin main
         run: |
           git pull origin main
+          rm -rf node_modules
           yarn install
       - name: yarn build
         env:
