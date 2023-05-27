@@ -62,16 +62,15 @@ jobs:
           script: |
             ls -al
             cd animal-FrontEnd/
-            npm install -g yarn
       - name: git pull origin main
         run: |
           sudo git pull 
           rm -rf node_modules
-          yarn install
+          npm install
       - name: yarn build
         env:
           CI: false
-        run: yarn build
+        run: npm build
       - name: service start
         env:
           CI: false
