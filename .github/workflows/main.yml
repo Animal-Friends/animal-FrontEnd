@@ -26,11 +26,11 @@ jobs:
         run: |
           git pull origin main
           rm -rf node_modules
-          npm install
+          yarn install
       - name: yarn build
         env:
           CI: false
-        run: npm run build
+        run: yarn build
       - name: service start
         env:
           CI: false
