@@ -61,6 +61,7 @@ jobs:
           port: 22 # SSH 접속용 포트
           script: |
             ls -al
+            sudo su
             cd animal-FrontEnd/
             sudo chmod 755 .git
       - name: git pull origin main
