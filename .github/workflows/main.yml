@@ -85,7 +85,7 @@ jobs:
         run: yarn global add serve
 
       - name: Copy Nginx Configuration
-        run: sudo cp nginx.conf /etc/nginx/sites-available/myapp
+        run: sudo cp nginx/nginx.conf /etc/nginx/sites-available/myapp
 
       - name: Create Symbolic Link
         run: sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/myapp
