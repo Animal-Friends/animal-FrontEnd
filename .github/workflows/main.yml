@@ -1,3 +1,48 @@
+#name: React build
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#jobs:
+#  SSH:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v3
+#
+#      - name: Setup Node.js
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: 17.x
+#
+#      - name: Install Yarn
+#        run: npm install -g yarn
+#
+#      - name: SSH-deploy
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.REMOTE_IP }}
+#          username: ubuntu
+#          key: ${{ secrets.SSH_PEM_KEY }}
+#          port: 22
+#          script: |
+#            cd animal-FrontEnd/
+#
+#            - name: Pull latest code
+#              run: sudo git pull origin main
+#
+#            - name: Install dependencies
+#              run: sudo yarn install
+#
+#            - name: Build project
+#              run: sudo yarn build
+#
+#            - name: List files
+#              run: ls -al
+#
+#            - name: Restart NGINX
+#              run: sudo service nginx restart
 name: React build
 on:
   push:
@@ -8,38 +53,24 @@ jobs:
   SSH:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 18.x
-
-      - name: Install Yarn
-        run: npm install -g yarn
-
+      - name: Install dependencies
+        run: yarn install
+        working-directory: animal-FrontEnd/
       - name: SSH-deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_IP }}
           username: ubuntu
-          key: ${{ secrets.SSH_PEM_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
             cd animal-FrontEnd/
-
-            - name: Pull latest code
-              run: sudo git pull origin main
-
-            - name: Install dependencies
-              run: sudo yarn install
-
-            - name: Build project
-              run: sudo yarn build
-
-            - name: List files
-              run: ls -al
-
-            - name: Restart NGINX
-              run: sudo service nginx restart
+            yarn install
+            git pull origin main
+            yarn build
+            ls -al
+            sudo service nginx restart
