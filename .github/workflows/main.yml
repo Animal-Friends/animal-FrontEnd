@@ -61,12 +61,10 @@ jobs:
           port: 22 # SSH 접속용 포트
           script: |
             ls -al
-            sudo su
             cd animal-FrontEnd/
-            sudo chmod 755 .git
       - name: git pull origin main
         run: |
-          git pull 
+          sudo git pull 
           rm -rf node_modules
           yarn install
       - name: yarn build
