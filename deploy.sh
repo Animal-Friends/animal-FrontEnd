@@ -1,9 +1,15 @@
 #!/bin/sh
-sudo rm -rf node_modules
-nvm install 18.0.0
-nvm use 18.0.0
+# 👇️ for macOS and Linux
+rm -rf node_modules
+rm -f package-lock.json
+rm -f yarn.lock
 
-npm install -g yarn
+# 👇️ clean npm cache
+npm cache clean --force
+
+# 👇️ install packages
+
 
 sudo yarn install
 sudo yarn build
+
