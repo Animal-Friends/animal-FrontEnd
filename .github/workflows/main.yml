@@ -62,6 +62,7 @@ jobs:
           script: |
             ls -al
             cd animal-FrontEnd/
+            npm install -g yarn
       - name: git pull origin main
         run: |
           sudo git pull 
