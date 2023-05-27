@@ -53,7 +53,7 @@ on:
       - main
 
 jobs:
-  SSH:
+  deploy:
     runs-on: ubuntu-latest
     env:
       CI: false
