@@ -21,8 +21,8 @@ jobs:
           port: 22
           script: |
             cd animal-FrontEnd/
-            git pull origin main
-            yarn install
-            yarn build
+            sudo git pull origin main
+            sudo yarn install
+            sudo yarn build
             ls -al
             sudo service nginx restart
