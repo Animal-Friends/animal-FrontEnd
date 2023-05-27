@@ -36,4 +36,6 @@ jobs:
         run: yarn build
       - name : start
         run : yarn global add serve
+      - name: s
+        run: ls -al
 
