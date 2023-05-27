@@ -81,7 +81,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 18.16.0
+          node-version: 17.19.1
       - name: SSH-deploy
         uses: appleboy/ssh-action@master
         with:
@@ -93,6 +93,7 @@ jobs:
             cd animal-FrontEnd/
             sudo git pull origin main
             sudo yarn install 
+            
             sudo yarn build
             ls -al
             sudo service nginx restart
