@@ -90,6 +90,8 @@ jobs:
           key: ${{ secrets.SSH_PEM_KEY }}
           port: 22
           script: |
+            node -v
+            yarn -v
             cd animal-FrontEnd/
             sudo git pull origin main
             sudo npm install 
