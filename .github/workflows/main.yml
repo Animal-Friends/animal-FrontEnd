@@ -28,6 +28,6 @@ jobs:
         run: |
           git pull origin main
           
-          sudo yarn install
-          sudo yarn build
-          sudo service nginx restart
+           yarn install
+           yarn build
+           service nginx restart
