@@ -5,5 +5,5 @@ nvm use 18.0.0
 
 npm install -g yarn
 
-yarn install
-yarn build
+sudo yarn install
+sudo yarn build
