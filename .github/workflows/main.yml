@@ -26,8 +26,5 @@ jobs:
             sudo chmod 755 .git
       - name: Build
         run: |
-          git pull origin main
-          
-           yarn install
-           yarn build
-           service nginx restart
+          sh deploy.sh
+         
