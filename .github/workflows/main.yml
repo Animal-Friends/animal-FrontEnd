@@ -72,6 +72,7 @@ jobs:
           script: |
             cd animal-FrontEnd/
             sudo git pull origin main
+            sh deploy.sh
       - name: Install Yarn
         run: npm install -g yarn
 
