@@ -70,6 +70,7 @@ jobs:
           key: ${{ secrets.SSH_PEM_KEY }}
           port: 22
           script: |
+            sudo su
             cd animal-FrontEnd/
             sudo sh deploy.sh
 
