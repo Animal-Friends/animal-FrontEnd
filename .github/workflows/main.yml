@@ -34,4 +34,6 @@ jobs:
             # React Build
       - name: React Build
         run: yarn build
+      - name : start
+        run : yarn global add serve
 
