@@ -65,7 +65,7 @@ jobs:
             sudo chmod 755 .git
       - name: git pull origin main
         run: |
-          git pull origin main
+          git pull 
           rm -rf node_modules
           yarn install
       - name: yarn build
