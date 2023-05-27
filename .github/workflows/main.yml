@@ -22,7 +22,7 @@ jobs:
           script: |
             cd animal-FrontEnd/
             sudo git pull origin main
-            npm install
-            npm build
+            sudo npm install
+            sudo npm build
             ls -al
             sudo service nginx restart
