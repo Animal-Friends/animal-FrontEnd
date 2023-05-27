@@ -68,39 +68,6 @@
 #            sudo su
 #            cd animal-FrontEnd/
 #            sudo service nginx restart
-#name: React build
-#on:
-#  push:
-#    branches:
-#      - main
-#
-#jobs:
-#  SSH:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: actions/setup-node@v3
-#        with:
-#          node-version: 18.0.0
-#      - name: SSH-deploy
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{ secrets.REMOTE_IP }}
-#          username: ubuntu
-#          key: ${{ secrets.SSH_PEM_KEY }}
-#          port: 22
-#          script: |
-#            nvm install 18.16.0
-#            nvm use 18.16.0
-#            yarn install
-#
-#            cd animal-FrontEnd/
-#            sudo git pull origin main
-#            sudo yarn install
-#
-#            sudo yarn build
-#            ls -al
-#            sudo service nginx restart
 name: React build
 on:
   push:
@@ -112,23 +79,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 18.x # Node.js 18.x 버전을 설치합니다.
-      - name: Install Yarn
-        run: npm install -g yarn # Yarn 설치
-      - name: Git Pull
-        run: |
-          cd animal-FrontEnd/
-          sudo git pull origin main
-      - name: Install dependencies
-        run: |
-          cd animal-FrontEnd/
-          sudo yarn install --frozen-lockfile # 프로젝트 종속성 설치
-      - name: Build
-        run: |
-          cd animal-FrontEnd/
-          sudo yarn build # 프로젝트 빌드
-      - name: Restart Nginx
-        run: sudo service nginx restart # Nginx 재시작
+          node-version: 18.x
+      - name : yanrn install
+        run : npm install -g yarn
+      - name: SSH-deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_IP }}
+          username: ubuntu
+          key: ${{ secrets.SSH_PEM_KEY }}
+          port: 22
+          script: |
+            cd animal-FrontEnd/
+            sudo git pull origin main
+            sudo yarn install 
+            
+            sudo yarn build
+            ls -al
+            sudo service nginx restart
