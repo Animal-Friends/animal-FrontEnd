@@ -1,4 +1,4 @@
 #!/bin/sh
-rm -rf node_modules
+sudo rm -rf node_modules
 yarn install
 yarn build
