@@ -90,8 +90,10 @@ jobs:
           key: ${{ secrets.SSH_PEM_KEY }}
           port: 22
           script: |
-            node -v
-            yarn -v
+            nvm install 18.16.0
+            nvm use 18.16.0
+            yarn install 
+  
             cd animal-FrontEnd/
             sudo git pull origin main
             sudo yarn install 
