@@ -7,12 +7,13 @@ import {
 } from "../button";
 import CustomTextField from "../input/CustomTextField";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import dayjs from "dayjs";
+import { localUserUpdate } from "../../redux/userSlice";
 
 const ProfileModal = ({ isProfileOpen, setIsProfileOpen }) => {
   const auth = useSelector((state) => state?.auth);
-  console.log(auth?.user?.name);
+  const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({
     name: auth?.user?.name ? auth?.user?.name : "",
     email: auth?.user?.email ? auth?.user?.email : "",
@@ -21,6 +22,14 @@ const ProfileModal = ({ isProfileOpen, setIsProfileOpen }) => {
 
   const handleChange = (type) => (e) => {
     setUserInfo({ ...userInfo, [type]: e.target.value });
+  };
+
+  const handleUserUpdate = () => {
+    let body = {
+      change_email: userInfo.email,
+      member_id: auth?.user?.member_id,
+    };
+    dispatch(localUserUpdate(body));
   };
   return (
     <>
@@ -59,6 +68,7 @@ const ProfileModal = ({ isProfileOpen, setIsProfileOpen }) => {
                 style={InputStyle}
                 type="text"
                 label={"이름"}
+                disabled={true}
                 variant="standard"
                 value={userInfo?.name}
               />
@@ -74,7 +84,11 @@ const ProfileModal = ({ isProfileOpen, setIsProfileOpen }) => {
 
             <div style={{ flex: 1 }}>
               <div style={{ marginTop: "10px" }}>
-                <BasicButton type="submit" text={"내 정보 업데이트"} />
+                <BasicButton
+                  onClick={handleUserUpdate}
+                  type="submit"
+                  text={"내 정보 업데이트"}
+                />
               </div>
             </div>
           </div>

@@ -8,11 +8,14 @@ import NavBar from "../../components/nav";
 import { CommonButton } from "../../components/button";
 import Board from "../../components/board";
 import api from "../../api/api";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const path = useLocation();
   const navigate = useNavigate();
   const [boardData, setBoardData] = useState([]);
+  const auth = useSelector((state) => state?.auth);
+
   const getBoard = async () => {
     try {
       const { data } = await api.get("/home");
@@ -46,7 +49,11 @@ const Home = () => {
           <CommonButton
             text={"글쓰기"}
             onClick={() => {
-              navigate("/board-service");
+              if (auth?.user.id === null) {
+                alert("로그인이 필요한 서비스입니다.");
+              } else {
+                navigate("/board-service");
+              }
             }}
           />
         </div>

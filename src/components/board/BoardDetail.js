@@ -25,9 +25,8 @@ const BoardDetail = () => {
   const location = useLocation();
 
   const deletePost = async () => {
-    let body = {};
     try {
-      const data = await api.delete("/post");
+      const data = await api.delete(`/post?id=${location?.state?.post_id}`);
       if (data?.status === 200) {
         alert("게시물 삭제 완료");
         navigate(-1);
@@ -63,13 +62,11 @@ const BoardDetail = () => {
     };
 
     try {
-      const data = await api.post("/reply", body);
-      setCommentList((prev) => {
-        const newData = body;
-        const newPrev = [...prev];
-        newPrev.unshift(newData);
-        return newPrev;
-      });
+      await api.post("/reply", body);
+      alert("댓글이 등록되었습니다.");
+      window.location.reload();
+
+      setComment("");
     } catch (e) {
       if (e?.response?.data?.msg) {
         alert(e?.response?.data?.msg);
@@ -78,11 +75,13 @@ const BoardDetail = () => {
     }
   };
 
-  const deleteComment = async (id) => {
-    console.log(id);
+  const deleteComment = async (id, index) => {
     try {
       const data = await api.delete(`/reply?comment_id=${id}`);
       console.log(data);
+      if (data?.status === 200) {
+        setCommentList(commentList.filter((data) => data.comment_id !== id));
+      }
     } catch (e) {
       if (e?.response?.data?.msg) {
         alert(e?.response?.data?.msg);
@@ -94,7 +93,6 @@ const BoardDetail = () => {
   useEffect(() => {
     getDetailPost();
   }, []);
-  console.log(commentList);
   return (
     <div>
       <div style={{ paddigBottom: "20px" }}>
@@ -165,7 +163,6 @@ const BoardDetail = () => {
             <UploadSubContentStyle>
               <CommentRootStyle style={{}}>
                 {commentList?.map((item, key) => {
-                  console.log(item?.comment_id);
                   return (
                     <CommentBox key={key}>
                       {/*<div>1</div>*/}
@@ -184,7 +181,8 @@ const BoardDetail = () => {
                           <div style={{ flex: 1 }}>
                             <CustomBiTrash
                               onClick={() => {
-                                deleteComment(item?.comment_id);
+                                console.log(item);
+                                deleteComment(item?.comment_id, key);
                               }}
                             />
                           </div>
