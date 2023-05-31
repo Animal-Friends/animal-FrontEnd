@@ -7,13 +7,14 @@ import {
 } from "../../button";
 import CustomTextField from "../../input/CustomTextField";
 import { useState } from "react";
+import api from "../../../api/api";
 
 const SignUpModal = ({ setLoginModal, isModalOpen, setIsOpenModal }) => {
   const [userInfo, setUserInfo] = useState({
     id: "",
     name: "",
     password: "",
-    birth: "",
+    birthday: "",
   });
   const [isError, setIsError] = useState({
     isPassword: false,
@@ -33,6 +34,42 @@ const SignUpModal = ({ setLoginModal, isModalOpen, setIsOpenModal }) => {
   const handleChange = (type) => (e) => {
     setUserInfo({ ...userInfo, [type]: e.target.value });
   };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    if (
+      userInfo.id === "" ||
+      userInfo.password === "" ||
+      userInfo.name === "" ||
+      userInfo.birthday === ""
+    ) {
+      alert("모든 항목을 기입해주세요");
+      return;
+    }
+    if (userInfo.password !== pwdCheck) {
+      alert("비밀번호 재확인 해주세요");
+      return;
+    }
+    let body = {
+      id: userInfo.id,
+      password: userInfo.password,
+      name: userInfo.name,
+      birthday: userInfo.birthday,
+    };
+
+    try {
+      const { data } = await api.post("/register", body);
+      if (data?.msg === "회원 가입이 완료되었습니다.") {
+        alert(data?.msg);
+        setLoginModal(true);
+        setIsOpenModal(false);
+      }
+    } catch (e) {
+      alert(e?.response?.data?.msg);
+      console.log(e?.response?.data?.msg);
+    }
+  };
+  console.log(userInfo);
   return (
     <>
       {isModalOpen && (
@@ -87,7 +124,7 @@ const SignUpModal = ({ setLoginModal, isModalOpen, setIsOpenModal }) => {
                 variant="outlined"
               />
               <CustomTextField
-                onChange={handleChange("birth")}
+                onChange={handleChange("birthday")}
                 style={InputStyle}
                 variant="outlined"
                 type={"date"}
@@ -98,7 +135,7 @@ const SignUpModal = ({ setLoginModal, isModalOpen, setIsOpenModal }) => {
               <div style={{ marginTop: "10px" }}>
                 <BasicButton
                   type="submit"
-                  onClick={() => {}}
+                  onClick={handleSignUp}
                   text={"회원가입 완료"}
                 />
               </div>

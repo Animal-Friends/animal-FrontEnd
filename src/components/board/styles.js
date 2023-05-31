@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const TopContainerStyle = styled.div`
   display: flex;
@@ -55,6 +55,21 @@ export const Button = styled.button`
   &:hover {
     background-color: #5ac8ff;
   }
+`;
+
+// 스타일드 컴포넌트 생성
+export const Input = styled.input`
+  /* 비활성화 스타일 */
+  ${(props) =>
+    props.disabled &&
+    css`
+      background-color: white;
+
+      /* 추가적인 스타일을 여기에 작성하세요 */
+    `};
+
+  /* 활성화 스타일 */
+  /* 추가적인 스타일을 여기에 작성하세요 */
 `;
 
 export const NullableStyle = styled.div`

@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useEffect, useState } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import React from "react";
@@ -7,10 +7,27 @@ import Carosel from "../../components/carousel/Carosel";
 import NavBar from "../../components/nav";
 import { CommonButton } from "../../components/button";
 import Board from "../../components/board";
+import api from "../../api/api";
 
 const Home = () => {
   const path = useLocation();
   const navigate = useNavigate();
+  const [boardData, setBoardData] = useState([]);
+  const getBoard = async () => {
+    try {
+      const { data } = await api.get("/home");
+      console.log(data);
+      setBoardData(data?.data);
+    } catch (e) {
+      if (e?.response?.data?.msg) {
+        return alert(e?.response?.data?.msg);
+      }
+      console.log(e?.response);
+    }
+  };
+  useEffect(() => {
+    getBoard();
+  }, [path.pathname === "/"]);
 
   return (
     <>
@@ -33,7 +50,7 @@ const Home = () => {
             }}
           />
         </div>
-        <Board />
+        <Board boardData={boardData} />
       </div>
     </>
   );

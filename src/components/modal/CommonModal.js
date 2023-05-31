@@ -1,7 +1,7 @@
 import { ModalBackdrop } from "./style/style";
 import styled from "styled-components";
 
-const CommonModal = ({ isModalOpen, setIsOpenModal, children }) => {
+const CommonModal = ({ isModalOpen, setIsOpenModal, children, ...style }) => {
   const onClickCommonClose = () => {
     setIsOpenModal(false);
   };
@@ -10,6 +10,7 @@ const CommonModal = ({ isModalOpen, setIsOpenModal, children }) => {
       {isModalOpen && (
         <ModalBackdrop onClick={onClickCommonClose}>
           <BoxContainer
+            style={style}
             onClick={(e) => {
               e.stopPropagation();
             }}
