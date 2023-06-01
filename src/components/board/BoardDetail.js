@@ -42,7 +42,6 @@ const BoardDetail = () => {
   const getDetailPost = async () => {
     try {
       const data = await api.get(`/post?post_id=${location?.state?.post_id}`);
-      console.log(data);
       setGetData(data?.data?.dat);
       setCommentList(data?.data?.dat?.Replies);
     } catch (e) {
@@ -78,7 +77,6 @@ const BoardDetail = () => {
   const deleteComment = async (id, index) => {
     try {
       const data = await api.delete(`/reply?comment_id=${id}`);
-      console.log(data);
       if (data?.status === 200) {
         setCommentList(commentList.filter((data) => data.comment_id !== id));
       }
@@ -181,7 +179,6 @@ const BoardDetail = () => {
                           <div style={{ flex: 1 }}>
                             <CustomBiTrash
                               onClick={() => {
-                                console.log(item);
                                 deleteComment(item?.comment_id, key);
                               }}
                             />

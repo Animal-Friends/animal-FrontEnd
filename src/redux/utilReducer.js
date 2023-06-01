@@ -11,7 +11,6 @@ const utilSlice = createSlice({
 
   reducers: {
     POSITION: (state, action) => {
-      console.log(action);
       state.positionlat = action.payload.latitude;
       state.positionlng = action.payload.longitude;
     },

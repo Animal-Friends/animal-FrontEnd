@@ -19,7 +19,6 @@ const Home = () => {
   const getBoard = async () => {
     try {
       const { data } = await api.get("/home");
-      console.log(data);
       setBoardData(data?.data);
     } catch (e) {
       if (e?.response?.data?.msg) {

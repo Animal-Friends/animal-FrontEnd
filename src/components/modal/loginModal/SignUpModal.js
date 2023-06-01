@@ -69,7 +69,6 @@ const SignUpModal = ({ setLoginModal, isModalOpen, setIsOpenModal }) => {
       console.log(e?.response?.data?.msg);
     }
   };
-  console.log(userInfo);
   return (
     <>
       {isModalOpen && (
