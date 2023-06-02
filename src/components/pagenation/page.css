@@ -1,55 +1,55 @@
 .pagination {
     display: flex;
-    justify-content: center;
-    margin-top: 15px;
-    font-family: 'Roboto', sans-serif;
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    margin-top: 15px; /* 위쪽 여백을 15px로 설정 */
+    font-family: 'Roboto', sans-serif; /* 글꼴 설정 */
 }
 
 ul {
-    list-style: none;
-    padding: 0;
+    list-style: none; /* 기본 목록 스타일 제거 */
+    padding: 0; /* 내부 여백 제거 */
 }
 
 ul.pagination li {
-    display: inline-block;
+    display: inline-block; /* 목록 항목을 가로로 배치 */
     width: 30px;
     height: 30px;
-    border: 1px solid #e2e2e2;
+    border: 1px solid #e2e2e2; /* 테두리 스타일 설정 */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    align-items: center; /* 수직 방향 가운데 정렬 */
+    font-size: 1rem; /* 글자 크기 설정 */
 }
 
 ul.pagination li:first-child {
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 5px; /* 첫 번째 목록 항목의 테두리 반경 설정 */
 }
 
 ul.pagination li:last-child {
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 5px 0; /* 마지막 목록 항목의 테두리 반경 설정 */
 }
 
 ul.pagination li a {
-    text-decoration: none;
-    color: #337ab7;
-    font-size: 1rem;
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    color: #337ab7; /* 링크의 색상 설정 */
+    font-size: 1rem; /* 글자 크기 설정 */
 }
 
 ul.pagination li.active a {
-    color: white;
+    color: white; /* 활성화된 링크의 글자 색상 설정 */
 }
 
 ul.pagination li.active {
-    background-color: #337ab7;
+    background-color: #337ab7; /* 활성화된 목록 항목의 배경색 설정 */
 }
 
 ul.pagination li a:hover,
 ul.pagination li a.active {
-    color: blue;
+    color: blue; /* 호버 또는 활성화된 링크의 글자 색상 설정 */
 }
 
 .page-selection {
     width: 48px;
     height: 30px;
-    color: #337ab7;
+    color: #337ab7; /* 글자 색상 설정 */
 }

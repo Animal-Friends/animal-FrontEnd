@@ -1,64 +1,54 @@
-
 .dots_custom {
-    display: inline-block;
-    vertical-align: middle;
-    margin: auto 0;
-    padding: 0;
+    display: inline-block; /* 요소를 인라인 블록으로 설정합니다. */
+    vertical-align: middle; /* 요소를 수직으로 가운데 정렬합니다. */
+    margin: auto 0; /* 위아래 여백은 자동으로 설정하고, 좌우 여백은 0으로 설정합니다. */
+    padding: 0; /* 내부 여백을 제거합니다. */
 }
 
 .slick-slider {
-    /* 위에는 이미지를 div에 꽉 채우기 위한 3가지 설정 */
+    /* 이미지를 div에 꽉 채우기 위한 3가지 설정을 추가할 수 있습니다. */
 }
 
-
 .dots_custom li {
-    list-style: none;
-    cursor: pointer;
-    display: inline-block;
-    margin: 0 6px;
-    padding: 0;
-
+    list-style: none; /* 리스트의 마커를 제거합니다. */
+    cursor: pointer; /* 커서를 포인터로 변경하여 마우스 이벤트를 나타냅니다. */
+    display: inline-block; /* 요소를 인라인 블록으로 설정합니다. */
+    margin: 0 6px; /* 좌우 여백을 0과 6px로 설정합니다. */
+    padding: 0; /* 내부 여백을 제거합니다. */
 }
 
 .dots_custom li button {
-    border: none;
-    background: #d1d1d1;
-    color: transparent;
-    cursor: pointer;
-    display: block;
-    height: 8px;
-    width: 8px;
-    border-radius: 100%;
-    padding: 0;
+    border: none; /* 테두리를 제거합니다. */
+    background: #d1d1d1; /* 배경색을 #d1d1d1로 설정합니다. */
+    color: transparent; /* 텍스트를 투명하게 설정하여 표시되지 않도록 합니다. */
+    cursor: pointer; /* 커서를 포인터로 변경하여 마우스 이벤트를 나타냅니다. */
+    display: block; /* 요소를 블록으로 설정합니다. */
+    height: 8px; /* 높이를 8px로 설정합니다. */
+    width: 8px; /* 너비를 8px로 설정합니다. */
+    border-radius: 100%; /* 원형의 테두리 반경을 설정합니다. */
+    padding: 0; /* 내부 여백을 제거합니다. */
 }
 
 .dots_custom li.slick-active button {
-    background-color: #ff7f00;
+    background-color: #ff7f00; /* 활성화된 요소의 배경색을 #ff7f00으로 설정합니다. */
 }
 
-
 .slick-slide {
-    padding-right: 20px;
+    padding-right: 20px; /* 우측 패딩을 20px로 설정합니다. */
 }
 
 .slick-prev:before {
-
-    font-size: 20px;
-    opacity: .75;
-    color: #ff7f00;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
+    font-size: 20px; /* 글꼴 크기를 20px로 설정합니다. */
+    opacity: .75; /* 투명도를 0.75로 설정합니다. */
+    color: #ff7f00; /* 글꼴 색상을 #ff7f00으로 설정합니다. */
+    -webkit-font-smoothing: antialiased; /* 웹킷 브라우저에서 부드럽게 글꼴을 렌더링합니다. */
+    -moz-osx-font-smoothing: grayscale; /* macOS에서 부드럽게 글꼴을 렌더링합니다. */
 }
-
-
 
 .slick-next:before {
-    font-size: 20px;
-    opacity: .75;
-    color: #ff7f00;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-size: 20px; /* 글꼴 크기를 20px로 설정합니다. */
+    opacity: .75; /* 투명도 */
+    -webkit-font-smoothing: antialiased; /* 웹킷 브라우저에서 부드럽게 글꼴을 렌더링합니다. */
+    -moz-osx-font-smoothing: grayscale; /* macOS에서 부드럽게 글꼴을 렌더링합니다. */
+
 }
-
-

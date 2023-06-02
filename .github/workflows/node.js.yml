@@ -1,31 +1,33 @@
-name: animal-friends CD
+name: animal-friends CD  # CD 파이프라인의 이름
 
 on:
-  push:
-    branches: [ "main" ]
+  push: # 푸시 이벤트가 발생할 때
+    branches: [ "main" ]  # "main" 브랜치에 푸시될 때
+
 jobs:
-  build:
+  build: # "build" 작업
+    runs-on: self-hosted  # 자체 호스트된 환경에서 실행
 
-    runs-on: self-hosted
+    strategy: # 전략 설정
+      matrix: # 매트릭스 전략
+        node-version: [ 18.x ]  # 노드 버전 "18.x" 사용
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    steps: # 실행 단계들
+      - uses: actions/checkout@v3  # 저장소 체크아웃 액션 사용
 
-    steps:
-      - uses: actions/checkout@v3
-      - name: Pull latest changes
-        run: git pull origin main
-      - name: Set CI environment variable
-        run: echo "CI=false" >> $GITHUB_ENV
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Pull latest changes  # 최신 변경 사항을 가져오는 작업
+        run: git pull origin main  # "main" 브랜치에서 최신 변경 사항을 가져옴
+
+      - name: Set CI environment variable  # CI 환경 변수 설정 작업
+        run: echo "CI=false" >> $GITHUB_ENV  # CI=false 환경 변수를 GitHub 환경 변수에 추가
+
+      - name: Use Node.js ${{ matrix.node-version }}  # 특정 노드 버전 사용 작업
+        uses: actions/setup-node@v3  # Node.js 설정 액션 사용
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
-      - run: yarn install
-      - run: yarn run build --if-present
-      - run: sudo service nginx restart
+          node-version: ${{ matrix.node-version }}  # 매트릭스에서 정의한 노드 버전 사용
 
+      - run: yarn install  # yarn을 사용하여 종속성 설치
 
+      - run: yarn run build --if-present  # yarn을 사용하여 빌드 실행 (있을 경우)
+
+      - run: sudo service nginx restart  # Nginx 서비스 재시작
