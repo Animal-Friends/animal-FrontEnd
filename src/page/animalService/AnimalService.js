@@ -25,18 +25,13 @@ const AnimalService = () => {
   const [isSelectedCompleted, setIsSelectedCompleted] = useState(false);
   const [selectedMarkerIndex, setSelectedMarkerIndex] = useState(null); // 선택된 마커의 인덱스를 추적하는 상태값
 
-  const [selectedPosition, setSelectedPosition] = useState({
-    x: "",
-    y: "",
-  });
   const { positionlat, positionlng } = useSelector((state) => state.util);
   // Redux의 상태에서 현재 위치 정보를 가져옴
-
-  const options = {};
 
   const [curState, setCurState] = useState({
     // 지도의 초기 위치
     center: { lat: positionlat, lng: positionlng },
+    searchCenter: { lat: "", lng: "" },
     // 지도 위치 변경시 panto를 이용할지에 대해서 정의
     isPanto: true,
   });
@@ -48,6 +43,7 @@ const AnimalService = () => {
   }, [location?.state]);
 
   const getSearch = async () => {
+    if (selectedcomplete.length === 0) return;
     try {
       const response = await axios.get(
         "https://dapi.kakao.com/v2/local/search/address.json",
@@ -66,8 +62,12 @@ const AnimalService = () => {
       const placesSearchCB = function async(data, status, pagination) {
         if (status === kakao.maps.services.Status.OK) {
           //OK가 떨어지면 데이터 searchData에 저장
-          console.log(data);
           setSearchData(data);
+        } else {
+          alert(
+            `현재 위치에 있는 ${selectedcomplete}는 검색 기록이 없습니다.!`
+          );
+          setSearchData([]);
         }
       };
       ps.keywordSearch(`${location?.state}`, placesSearchCB, {
@@ -96,7 +96,6 @@ const AnimalService = () => {
     const placesSearchCB = function async(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
         //OK가 떨어지면 데이터 searchData에 저장
-        console.log(data);
         setSearchData(data);
       }
     };
@@ -111,7 +110,7 @@ const AnimalService = () => {
 
   useEffect(() => {
     getSearch();
-  }, [selectedcomplete]);
+  }, [isSelectedCompleted, selectedcomplete]);
   const handleClickManyMaker = async (x, y, index) => {
     // 카드리스트에대한 x,y값을 받아오기위한 함수
     setCurState({

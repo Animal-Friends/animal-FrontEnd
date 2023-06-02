@@ -2,7 +2,7 @@ import { CustomOverlayMap, MapMarker, useMap } from "react-kakao-maps-sdk";
 import { useState } from "react";
 
 //카카오맵에 대한 마커를 찍기위한 커스텀 마커 컴포넌트화
-const CustomMarker = ({ setCurIndex, position, index }) => {
+const CustomMarker = ({ setCurIndex, position, index, curState }) => {
   const map = useMap();
   // ㅋ카오맵함수를 불러오는부분 ㅇ
   return (
