@@ -50,7 +50,7 @@ const Home = () => {
             text={"글쓰기"} // 버튼 텍스트
             onClick={() => {
               //버튼 클릭함수
-              if (auth?.user.id === null) {
+              if (auth?.user.id === undefined) {
                 // user.id가 없으면
                 alert("로그인이 필요한 서비스입니다.");
               } else {

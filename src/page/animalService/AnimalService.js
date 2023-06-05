@@ -22,6 +22,7 @@ const AnimalService = () => {
   const [subSelectOptions, setSubSelectOptions] = useState("");
   const [selectOptions, setSelectOptions] = useState("");
   const [selectedcomplete, setSelectedComplete] = useState("");
+
   const [isSelectedCompleted, setIsSelectedCompleted] = useState(false);
   const [selectedMarkerIndex, setSelectedMarkerIndex] = useState(null); // 선택된 마커의 인덱스를 추적하는 상태값
 
@@ -44,11 +45,14 @@ const AnimalService = () => {
 
   const getSearch = async () => {
     if (selectedcomplete.length === 0) return;
+    //시 구 를 선택할시 length 0이상이기에 둘다선택안할시 0
     try {
       const response = await axios.get(
+          //시 , 구 를 토대로 조회하는 api Kakao 서버
         "https://dapi.kakao.com/v2/local/search/address.json",
         {
           headers: {
+            //카카오키 restapi 키
             Authorization: "KakaoAK " + "8282a0c10603a7e03d75bae01a97ef07",
           },
           params: {
@@ -65,8 +69,9 @@ const AnimalService = () => {
           setSearchData(data);
         } else {
           alert(
-            `현재 위치에 있는 ${selectedcomplete}는 검색 기록이 없습니다.!`
+            `현재 위치에 있는 ${selectedcomplete}는 검색 기록이 없습니다!`
           );
+          //카드리스트 데이터 없애주기
           setSearchData([]);
         }
       };
@@ -75,6 +80,7 @@ const AnimalService = () => {
         y: response.data?.documents[0].y,
         radius: 2000,
       });
+      //api로부터 받은데이터를 curstate로 넣어주면서 현재위치 표시
       setCurState({
         center: {
           lat: response.data?.documents[0].y,
